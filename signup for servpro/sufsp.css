@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"] {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.gender-container {
+    margin-bottom: 15px;
+}
+
+.gender-container span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gender-container label {
+    margin-right: 10px;
+}
+
+select option:first-child {
+    color: #999;
+}
+#experience{
+    height:35px;
+    width:96%;
+    border-color: #cdc9c9;
+    margin-bottom: 15px;
+}
+
+input[type="file"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e4b21b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 96%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin-left:2px
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+input[type="file"]::before {
+    content: 'Choose Aadhar Photo';
+    display: inline-block;
+    background-color: #e4b21f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 96%;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 15px;
+}
+
+input[type="file"].uploaded::before {
+    content: 'File Uploaded';
+    background-color: #4caf50;
+}
+
+
+input[type="file"]:active::before {
+    background-color: #d3a517;
+}
+
+/* Style for the file name display */
+#fileName {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+#g-recaptcha {
+    width: 96%;
+    margin-bottom: 15px;
+}
+
+#otp-sender {
+    width: 95%;
+    padding: 10px;
+    background-color: #e4b21b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#otp-sender:hover {
+    background-color: #ebc44e;
+}

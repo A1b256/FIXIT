@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reCAPTCHA Test</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+</head>
+<body>
+    <h2>reCAPTCHA Test</h2>
+    <div id="g-recaptcha"></div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyBUFV3rgGAz29JwYHAZobxIjA31f4NhcSI",
+        authDomain: "fiixit-aaf96.firebaseapp.com",
+        projectId: "fiixit-aaf96",
+        storageBucket: "fiixit-aaf96.appspot.com",
+        messagingSenderId: "1046769132018",
+        appId: "1:1046769132018:web:e4c3a8e527d71caba98b6b"
+      };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        window.onload = function() {
+            renderReCAPTCHA();
+        };
+
+        function renderReCAPTCHA() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('g-recaptcha', {
+                'size': 'normal',
+                'callback': function(response) {
+                    console.log("reCAPTCHA solved");
+                },
+                'expired-callback': function() {
+                    console.warn("reCAPTCHA expired");
+                }
+            });
+
+            window.recaptchaVerifier.render().then(function(widgetId) {
+                console.log("reCAPTCHA rendered with ID:", widgetId);
+            }).catch(function(error) {
+                console.error("Error rendering reCAPTCHA:", error);
+            });
+        }
+    </script>
+</body>
+</html>

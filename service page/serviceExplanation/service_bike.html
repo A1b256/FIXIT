@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        var totalCost = 0; 
+
+        function add(serviceId, serviceCostId) {
+            var sum = document.getElementById("summary");
+            sum.style.display = 'block';
+            
+            var serviceText = document.getElementById(serviceId).innerText;
+            var serviceCost = parseInt(document.getElementById(serviceCostId).innerText.replace('₹', ''));
+            totalCost += serviceCost;
+            
+            var summaryItem = document.createElement("div");
+            summaryItem.className = "summary-item"; 
+            var summaryText = document.createElement("span");
+            var summaryCost = document.createElement("span");
+        
+            // Create minus icon
+            var removeIcon = document.createElement("i");
+            removeIcon.className = "fas fa-minus-circle";
+            removeIcon.style.cursor = "pointer";
+            removeIcon.style.marginLeft = "10px";
+            removeIcon.onclick = function() {
+                removeService(summaryItem, serviceCost);
+            };
+        
+            summaryText.innerText = serviceText;
+            summaryCost.innerText = "₹" + serviceCost;
+            
+            summaryItem.appendChild(summaryText);
+            summaryItem.appendChild(summaryCost);
+            summaryItem.appendChild(removeIcon);
+        
+            document.getElementById("summary").appendChild(summaryItem);
+            document.getElementById("total").innerText = "Total: ₹" + totalCost;
+        
+            sum.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function removeService(summaryItem, serviceCost) {
+            // Remove the item from the summary list
+            summaryItem.remove();
+            
+            // Deduct the cost from the total
+            totalCost -= serviceCost;
+            document.getElementById("total").innerText = "Total: ₹" + totalCost;
+        }
+        
+    </script>
+    
+    <style>
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 97%;
+            padding: 25px;
+            background: rgba(159, 159, 149, 0.856);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(3, 3, 3, 0.2);
+        }
+        .logo {
+            color: #000000;
+            font-size: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5%;
+            cursor: default;
+        }
+        .navbar a {
+            color: #000000;
+            font-size: 18px;
+            text-decoration: none;
+            margin-left: 150px;
+            transition: .5s;
+        }
+        .navbar a:hover {
+            color: rgb(236, 230, 230);
+        }
+        .content {
+            margin-top: 120px; 
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .text-content {
+            width: 60%;
+        }
+        .image-content {
+            width: 40%;
+            padding-left: 20px;
+        }
+        .image-content img {
+            max-width: 70%;
+            height: 80%;
+            margin-left: 10%;
+        }
+        .services {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .services h3 {
+            margin-bottom: 20px;
+        }
+        
+.services-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: flex-start;
+    flex-wrap:nowrap;
+}
+
+.service-grid {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+    
+}
+.service-item {
+    flex: 0 0 18%;
+  
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+#summary {
+    margin-right: 2%;
+    width: 20%;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 3%;
+    background-color: #f9f9f9;
+   
+   
+    height: fit-content;
+}
+
+        .service-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .service-item p {
+            margin-top: 10px;
+            font-weight: bold;
+            margin-bottom: 10px; 
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .book-now {
+            background-color: #f0de1e;
+            color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+       
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .summary-item i {
+            color: red;
+            font-size: 35px;
+        }
+        
+        .summary-item span {
+            font-size: 15px;
+        }
+        
+        .summary-item span:first-child {
+            text-align: left;
+        }
+        
+        .summary-item span:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+    #sh{
+              margin-top:10px;
+    }  
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><i class="fa-solid fa-screwdriver-wrench"></i> Fixit</div>
+        <nav class="navbar">
+            <a href="http://127.0.0.1:5500/homepage/homepage.html" id="home">Home</a>
+            <a href="#">Purchases</a>
+            <a href="http://127.0.0.1:5500/service%20page/index.html">Services</a>
+            <a href="#about_us">About us</a>
+            <a href="#" id="user"><i class="fa-solid fa-user"></i></a>
+        </nav>
+    </header>
+    
+    <div class="content">
+        <div class="text-content">
+            <h1 style="font-size: 40px;">Bike Service</h1>
+            <p style="font-size: 20px;">⭐ 4.6 / 5 based on 15 ratings</p>
+            <p style="font-size: 25px;">
+            </br></br>Rev up your ride with the best bike service in town! At Fixit, we pride ourselves on providing top-notch local bike repairs and maintenance. Whether your bike has been your trusted companion for years or you’ve just bought it recently, keeping it in peak condition is essential. If you're searching for the best bike repair shop, bike technician, or bike service near you, look no further. We offer comprehensive services, including bike repairs, cleaning, brake adjustments, gear tuning, and more. Simply book your service online and enjoy peace of mind while we take care of your bike.
+            </p>
+        </div>
+        <div class="image-content">
+            <img src="Firefly a young dynamic beautiful indian mechanic repairing a motor cycle actively and happily white.jpg" alt="Washing Machine Service">
+        </div>
+    </div>
+    <div class="services">
+        <h2 style="font-size: 40px;">Choose Services</h2>
+        <div class="services-wrapper">
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="bike.jpg" alt="Repair" height = "150px">
+                    <p id="one">General Service</p>
+                    <p id="c1"><span>&#8377;</span>900</p>
+                    <button class="book-now" onclick="add('one','c1')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="bikeEngine.png" alt="Servicing Cleaning">
+                    <p id="two">Engine Overhauling</p>
+                    <p id="c2"><span>&#8377;</span>600</p>
+                    <button class="book-now" onclick="add('two','c2')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="clutch.jpg" alt="Water Drain Issue" height = "150px" >
+                    <p id="three">clutch plate service</p>
+                    <p id="c3"><span>&#8377;</span>700</p>
+                    <button class="book-now" onclick="add('three','c3')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="bike tyre.jpg" alt="Tub Rotation Issue" height = "150px">
+                    <p id="four">Tyre service</p>
+                    <p id="c4"><span>&#8377;</span>500</p>
+                    <button class="book-now" onclick="add('four','c4')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="Firefly motor cycle hand bar brake with white background 88279.jpg" alt="Servicing Cleaning (AMC)">
+                    <p id="five">brake system service</p>
+                    <p id="c5"><span>&#8377;</span>600</p>
+                    <button class="book-now" onclick="add('five','c5')">Book Now</button>
+                </div>
+            </div>
+            <div id="summary">
+                <h1 style="color:#e4b21b" id = "sh">Summary</h1>
+                <h1 id="total">Total: ₹0</h1>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

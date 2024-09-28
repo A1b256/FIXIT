@@ -1,0 +1,10 @@
+/* styles.css */
+
+.Menubar{
+    background-color: rgb(19, 115, 148); /* You can change this to any color you like */
+    padding: 20px;
+    border: 1px solid #000; /* Optional: Adds a border around the div */
+    margin: 20px; /* Optional: Adds some space around the div */
+    color: #333; /* Optional: Changes the text color */
+    font-size: 18px; /* Optional: Changes the font size */
+}

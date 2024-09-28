@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        var totalCost = 0; 
+
+        function add(serviceId, serviceCostId) {
+            var sum = document.getElementById("summary");
+            sum.style.display = 'block';
+            
+            var serviceText = document.getElementById(serviceId).innerText;
+            var serviceCost = parseInt(document.getElementById(serviceCostId).innerText.replace('₹', ''));
+            totalCost += serviceCost;
+            
+            var summaryItem = document.createElement("div");
+            summaryItem.className = "summary-item"; 
+            var summaryText = document.createElement("span");
+            var summaryCost = document.createElement("span");
+        
+            // Create minus icon
+            var removeIcon = document.createElement("i");
+            removeIcon.className = "fas fa-minus-circle";
+            removeIcon.style.cursor = "pointer";
+            removeIcon.style.marginLeft = "10px";
+            removeIcon.onclick = function() {
+                removeService(summaryItem, serviceCost);
+            };
+        
+            summaryText.innerText = serviceText;
+            summaryCost.innerText = "₹" + serviceCost;
+            
+            summaryItem.appendChild(summaryText);
+            summaryItem.appendChild(summaryCost);
+            summaryItem.appendChild(removeIcon);
+        
+            document.getElementById("summary").appendChild(summaryItem);
+            document.getElementById("total").innerText = "Total: ₹" + totalCost;
+        
+            sum.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function removeService(summaryItem, serviceCost) {
+            // Remove the item from the summary list
+            summaryItem.remove();
+            
+            // Deduct the cost from the total
+            totalCost -= serviceCost;
+            document.getElementById("total").innerText = "Total: ₹" + totalCost;
+        }
+        
+    </script>
+    
+    <style>
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 97%;
+            padding: 25px;
+            background: rgba(159, 159, 149, 0.856);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(3, 3, 3, 0.2);
+        }
+        .logo {
+            color: #000000;
+            font-size: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5%;
+            cursor: default;
+        }
+        .navbar a {
+            color: #000000;
+            font-size: 18px;
+            text-decoration: none;
+            margin-left: 150px;
+            transition: .5s;
+        }
+        .navbar a:hover {
+            color: rgb(236, 230, 230);
+        }
+        .content {
+            margin-top: 120px; 
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .text-content {
+            width: 60%;
+        }
+        .image-content {
+            width: 40%;
+            padding-left: 20px;
+        }
+        .image-content img {
+            max-width: 70%;
+            height: 80%;
+            margin-left: 10%;
+        }
+        .services {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .services h3 {
+            margin-bottom: 20px;
+        }
+        
+.services-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: flex-start;
+    flex-wrap:nowrap;
+}
+
+.service-grid {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+    
+}
+.service-item {
+    flex: 0 0 18%;
+  
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+#summary {
+    margin-right: 2%;
+    width: 20%;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 3%;
+    background-color: #f9f9f9;
+   
+   
+    height: fit-content;
+}
+
+        .service-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .service-item p {
+            margin-top: 10px;
+            font-weight: bold;
+            margin-bottom: 10px; 
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .book-now {
+            background-color: #f0de1e;
+            color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+       
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .summary-item i {
+            color: red;
+            font-size: 35px;
+        }
+        
+        .summary-item span {
+            font-size: 15px;
+        }
+        
+        .summary-item span:first-child {
+            text-align: left;
+        }
+        
+        .summary-item span:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+    #sh{
+              margin-top:10px;
+    }  
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><i class="fa-solid fa-screwdriver-wrench"></i> Fixit</div>
+        <nav class="navbar">
+            <a href="http://127.0.0.1:5500/homepage/homepage.html" id="home">Home</a>
+            <a href="#">Purchases</a>
+            <a href="http://127.0.0.1:5500/service%20page/index.html">Services</a>
+            <a href="#about_us">About us</a>
+            <a href="#" id="user"><i class="fa-solid fa-user"></i></a>
+        </nav>
+    </header>
+    
+    <div class="content">
+        <div class="text-content">
+            <h1 style="font-size: 40px;">AC repair Service</h1>
+            <p style="font-size: 20px;">⭐ 4.5 / 5 based on 15 ratings</p>
+            <p style="font-size: 25px;">
+            </br></br>Revitalize your comfort with the best AC service in town! At Fixit, we take pride in offering top-tier local AC repairs and maintenance. Whether your AC unit has been keeping you cool for years or you’ve just installed it, ensuring it operates at peak performance is crucial. If you're looking for the best AC repair shop, technician, or service near you, your search ends here. We provide a full range of services, including AC repairs, cleaning, filter replacements, refrigerant refills, and more. Just book your service online and relax while we ensure your AC runs smoothly
+            </p>
+        </div>
+        <div class="image-content">
+            <img src="ac.jpg" alt="Ac repair Service">
+        </div>
+    </div>
+    <div class="services">
+        <h2 style="font-size: 40px;">Choose Services</h2>
+        <div class="services-wrapper">
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="https://st2.depositphotos.com/1010613/7207/i/380/depositphotos_72077837-stock-photo-technician-repairing-air-conditioner.jpg" alt="Repair" height = "150px">
+                    <p id="one">Repair</p>
+                    <p id="c1"><span>&#8377;</span>900</p>
+                    <button class="book-now" onclick="add('one','c1')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="https://st4.depositphotos.com/1655708/30577/i/380/depositphotos_305778874-stock-photo-technician-service-checking-and-repairing.jpg" alt="Service" height = "60%">
+                    <p id="two">Service</p>
+                    <p id="c2"><span>&#8377;</span>600</p>
+                    <button class="book-now" onclick="add('two','c2')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="https://st5.depositphotos.com/32568146/67433/i/380/depositphotos_674337700-stock-photo-close-man-hand-holding-air.jpg" alt="Cooling problem" height = "150px" >
+                    <p id="three">Cooling problem</p>
+                    <p id="c3"><span>&#8377;</span>1100</p>
+                    <button class="book-now" onclick="add('three','c3')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="https://static7.depositphotos.com/1057968/721/i/600/depositphotos_7212393-stock-photo-air-condition.jpg" alt="Installation" height = "150px">
+                    <p id="four">Installation</p>
+                    <p id="c4"><span>&#8377;</span>800</p>
+                    <button class="book-now" onclick="add('four','c4')">Book Now</button>
+                </div>
+                <div class="service-item">
+                    <img src="data:image/jpeg;base64,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" alt="Water/gas leakage" height="60%">
+                    <p id="five">Water/Gas leakage</p>
+                    <p id="c5"><span>&#8377;</span>900</p>
+                    <button class="book-now" onclick="add('five','c5')">Book Now</button>
+                </div>
+            </div>
+            <div id="summary">
+                <h1 style="color:#e4b21b" id = "sh">Summary</h1>
+                <h1 id="total">Total: ₹0</h1>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

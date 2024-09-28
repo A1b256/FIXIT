@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<head>
+<html lang = "en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
+    <title>HomeServices</title>
+    <style>
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 30px;
+            background-color:#36404a;
+            height:30%;
+            overflow:hidden;
+        }
+        
+        .nav-item {
+            margin: 0px 50px;
+            color:white;
+        }
+        #name{
+            margin:0px 700px;
+            color:white;
+        
+        }
+        .nav-item:hover{
+          color:#e4b21b;
+        
+        }
+        .serv-container{
+            display:flex;
+            width: 100%;
+            height:874px;
+            flex-direction:row;
+            row-gap: 2px;
+            flex-wrap: wrap;
+            transition: all 0.8s ease;
+            justify-content: center;
+            align-items: center;
+            background-image: url("https://www.hdwallpapers.in/download/dark_ash_apple_inc__lines_abstraction_4k_5k_hd_abstract-2560x1440.jpg");
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        #horizontal-line{
+            height:10px;
+        }
+        
+        .serv-container > div{
+            background-color: white;
+            display:inline-block;
+            border-color:whitesmoke;
+            border-style:outset ;
+            border-radius:10px;
+            margin:15px;
+            height: 10%;
+            width:10%;
+            padding:45px;
+            overflow: hidden; 
+            position:relative;
+            transition: all 1s ease ;
+            justify-content: center;
+            align-items: center;
+        }
+        #serv1:hover{
+            box-shadow: 10px 20px 30px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        
+        }
+        #serv2:hover{
+            box-shadow: 10px 20px 30px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv3:hover{
+            box-shadow: 10px 20px 30px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv4:hover{
+            box-shadow: 10px 20px 30px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv5:hover{
+            box-shadow: 10px 20px 30px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv6:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv7:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv8:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv9:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv10:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;
+            width:15%;
+        }
+        #serv11:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        
+        }
+        #serv12:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv13:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv14:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv15:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv16:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv17:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        #serv18:hover{
+            box-shadow: 10px 20px 20px rgba(36, 36, 36, 0.5);
+            height:15%;width:15%;
+        }
+        .text {
+            position:absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black; 
+            padding: 20px; 
+            border-radius: 5px; 
+            display: none;
+            text-align: center;
+          }
+        
+        .serv-container>div:hover .text{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <!--<img id ="logo" src="index_files\logo-removebg-preview.png" alt="logo" height= 50% width=10%  >-->
+         <p id = "name">FIXIT</p>
+         <p class="nav-item">Home </p>
+         <p class="nav-item">Purchases </p>
+         <p class="nav-item">Services </p>
+         <p class="nav-item">About us </p>
+         <i class="fa-solid fa-user"></i>
+         
+        
+         </div>
+         <div id = "horizontal-line">
+         </div>
+         <div class = "serv-container">
+     
+            <div id = "serv1">
+
+                <img id = "fridge" src = "index_files\red fridge.jpg" width = 110% height = 110%>
+                <div class = "text"><b>Refrigeration Technician</b></div>
+            </a>
+            </div>
+            <div id = "serv2">
+                <img id = "wm" src = "index_files\wm2.jpg" width = 100% height = 95%>
+                <div class = "text"><b>Washing Machine Technician</b></div>
+            </div>
+            <div id = "serv3">
+                <img id = "tv" src = "index_files\tv6.png" width = 100% height = 100%>
+                <div class = "text"><b>Television Repair</b></div>
+            </div>
+            <div id = "serv4">
+                <img id = "comp" src = "index_files\comp2.png" width = 100% height = 90%>
+                <div class = "text"><b>Computer Repair</b></div>
+            </div>
+            <div id = "serv5">
+                <img id = "pipe" src = "index_files\pipe.png" width = 100% height = 90%>
+                <div class = "text"><b>Plumber</b></div></div>
+            <div id = "serv6">
+                <img id = "carp" src = "index_files\carp.png" width = 100% height = 95%>
+                <div class = "text"><b>Carpenter</b></div></div>
+            <div id = "serv7">
+                <img id = "ac" src = "index_files\ac2.png" width = 100% height = 90%> 
+                <div class = "text"><b>Air Conditioner Technician</b></div></div>
+            <div id = "serv8">
+                <img id = "wp" src = "index_files\water purfier.png" width = 100% height = 90%>
+                <div class = "text"><b>Water Purifier RO UV</b></div> </div>
+            <div id = "serv9">
+                <img id = "paint" src = "index_files\paint.png" width = 100% height = 90%> 
+                <div class = "text"><b>Painter</b></div></div>
+            <div id = "serv10">
+                <img id = "inv" src = "index_files\battery.png" width = 100% height = 90%>
+                <div class = "text"><b>Inverter Service</b> </div></div>
+            <div id = "serv11">
+                <img id = "car" src = "index_files\car.png" width = 100% height = 100%>
+                <div class = "text"><b>Car repair Mechanic</b></div></div>
+            <div id = "serv12">
+                <img id = "cctv" src = "index_files\cctv.png" width = 100% height = 90%>
+                <div class = "text"><b>CCTV camera</b> </div></div>
+            <div id = "serv13">
+                <img id = "bike" src = "index_files\bike.png" width = 100% height = 95%>
+                <div class = "text"><b>Two wheeler repair</b></div> </div>
+            <div id = "serv14">
+                <img id = "electrician" src = "index_files\bulb.png" width = 100% height = 90%> 
+                <div class = "text"><b>Electrician</b></div></div>
+            <div id = "serv15">
+                <img id = "chimney" src = "index_files\chimney.png" width = 100% height = 90%> 
+                <div class = "text"><b>Chimney Technician</b></div></div>
+            <div id = "serv16">
+                <img id = "geyser" src = "index_files\geyser.png" width = 100% height = 95%>
+                <div class = "text"><b>geyser</b></div> </div>
+            <div id = "serv17">
+                <img id = "mosqnet" src = "index_files\mosquito.png" width = 100% height = 90%>
+                <div class = "text"><b>Mosquito net</b></div> </div>
+            <div id = "serv18">
+                <img id = "oven" src = "index_files\oven.png" width = 100% height = 100%>
+                <div class = "text"><b>Oven serives</b></div> </div>
+         </div>
+</body>
+</html>

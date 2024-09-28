@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="otp.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="otp.js"></script>
+</head>
+<body>
+    <div class="otp-container">
+        <h2>Enter OTP</h2>
+        <h6>Enter the otp sent to your registered phone number</h6>
+        <form id="otpForm">
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="button" id="verify-otp" onClick="verifyOTP()">Verify OTP</button>
+        </form>
+    </div>
+</body>
+</html>

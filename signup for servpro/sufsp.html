@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Signup</title>
+    <link rel="stylesheet" href="sufsp.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="sufsp.js" defer></script>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Service Provider Signup</h2>
+        <form id="signupForm">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="number" id="age" name="age" placeholder="Age" min="18" max="65" required>
+            <div class="gender-container">
+                <label>
+                    <input type="radio" name="gender" value="male" required> Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female" required> Female
+                </label>
+            </div>
+            <input type="tel" id="phone" name="phone" pattern="\+91[0-9]{10}" placeholder="+91XXXXXXXXXX" required>
+            <input type="text" id="address" name="address" placeholder="Address" required>
+            <input type="text" id="expertise" name="expertise" placeholder="Area of Expertise" required>
+            <select id="experience" name="experience" required>
+                <option value="" disabled selected>Years of Experience</option>
+                <option value="no_experience">No experience</option>
+                <option value="1-5_years">1-5 years</option>
+                <option value="more_than_5_years">More than 5 years</option>
+            </select>
+            <input type="file" id="aadharImage" name="aadharImage" accept="image/*" required>
+            <span id="fileName"></span>
+
+            <!-- reCAPTCHA Widget -->
+            <div id="g-recaptcha"></div>
+
+            <button type="button" id="otp-sender" onClick="phoneAuth()">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

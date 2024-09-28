@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase OTP with Test reCAPTCHA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        #status {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>OTP Generation with Firebase</h2>
+    <input type="text" id="phone-number" placeholder="Enter phone number" />
+    <div id="recaptcha-container"></div>
+    <button id="send-otp">Send OTP</button>
+    <input type="text" id="otp" placeholder="Enter OTP" style="display:none;" />
+    <button id="verify-otp" style="display:none;">Verify OTP</button>
+    <p id="status"></p>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBUFV3rgGAz29JwYHAZobxIjA31f4NhcSI",
+        authDomain: "fiixit-aaf96.firebaseapp.com",
+        projectId: "fiixit-aaf96",
+        storageBucket: "fiixit-aaf96.appspot.com",
+        messagingSenderId: "1046769132018",
+        appId: "1:1046769132018:web:e4c3a8e527d71caba98b6b"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'sitekey': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', // Test site key
+        'callback': function(response) {
+            console.log("reCAPTCHA solved");
+        },
+        'expired-callback': function() {
+            console.log("reCAPTCHA expired");
+        }
+    });
+
+    recaptchaVerifier.render().then(function(widgetId) {
+        window.recaptchaWidgetId = widgetId;
+    });
+
+    document.getElementById('send-otp').addEventListener('click', function() {
+        const phoneNumber = document.getElementById('phone-number').value;
+        auth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+            .then((confirmationResult) => {
+                window.confirmationResult = confirmationResult;
+                document.getElementById('status').innerText = "OTP sent!";
+                document.getElementById('otp').style.display = 'block';
+                document.getElementById('verify-otp').style.display = 'block';
+            }).catch((error) => {
+                document.getElementById('status').innerText = "Error: " + error.message;
+            });
+    });
+
+    document.getElementById('verify-otp').addEventListener('click', function() {
+        const otp = document.getElementById('otp').value;
+        window.confirmationResult.confirm(otp).then((result) => {
+            document.getElementById('status').innerText = "Phone number verified!";
+        }).catch((error) => {
+            document.getElementById('status').innerText = "Error: " + error.message;
+        });
+    });
+</script>
+
+</body>
+</html>
